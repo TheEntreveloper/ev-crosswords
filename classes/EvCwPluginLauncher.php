@@ -186,10 +186,10 @@ class EvCwPluginLauncher {
     }
 
     public function delCw($postid, $post = null) {
-        if ( !current_user_can( 'delete_post', $postid ) ) {
-            wp_die("Unable to continue: access denied");
-        }
         if (isset($post) && $post instanceof WP_Post && $post->post_type === 'ev_crossword' && isset($post->post_excerpt)) {
+            if ( !current_user_can( 'delete_post', $postid ) ) {
+                wp_die("Unable to continue: access denied");
+            }
             if (!@unlink($post->post_excerpt)) {
                 // for now only logging the failure
                 error_log('Failed to delete crossword file: '.$post->post_excerpt);
