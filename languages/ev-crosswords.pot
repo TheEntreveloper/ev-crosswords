@@ -1,0 +1,161 @@
+# Copyright (C) 2022 EV Crosswords
+# This file is distributed under the same license as the EV Crosswords package.
+msgid ""
+msgstr ""
+"Project-Id-Version: EV Crosswords 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ev-crosswords\n"
+"POT-Creation-Date: 2022-11-10 18:42:16+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: classes/EvCwPluginLauncher.php:31
+msgid "crosswords"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:31
+msgid "crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:32
+msgid "Add New Crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:32
+msgid "Edit Crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:33
+msgid "New Crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:33
+msgid "View Crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:34
+msgid "View Crosswords"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:34
+msgid "Search Crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:35
+msgid "No Crosswords found"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:35
+msgid "No Crosswords found in Trash"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:36
+msgid "Crossword Attributes"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:36
+msgid "Crossword published"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:76
+msgid "EvCwv Settings"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:76
+msgid "Ev Crosswords Settings"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:130
+msgid "Unable to save your crossword"
+msgstr ""
+
+#: classes/EvCwPluginLauncher.php:154
+msgid "The crossword has been saved. You could now upload another Crossword"
+msgstr ""
+
+#: views/crossword/single-block-crossword.php:19
+#: views/crossword/single-crossword.php:44
+msgid "Crossword"
+msgstr ""
+
+#: views/crossword/single-block-crossword.php:20
+#: views/crossword/single-crossword.php:45
+msgid "Your crossword is ready."
+msgstr ""
+
+#: views/crossword/single-block-crossword.php:20
+#: views/crossword/single-crossword.php:45
+msgid ""
+"Use your mouse and keyboard to interact with it (Shift-click changes writing "
+"direction)"
+msgstr ""
+
+#: views/crossword/single-block-crossword.php:30
+#: views/crossword/single-crossword.php:55
+msgid ""
+"Press on a cell to view hints here. Use Shift-click to change writing "
+"direction"
+msgstr ""
+
+#: views/crossword/single-block-crossword.php:32
+#: views/crossword/single-crossword.php:57
+msgid "View solution"
+msgstr ""
+
+#: views/crossword/single-block-crossword.php:33
+#: views/crossword/single-crossword.php:58
+msgid "Check for mistakes"
+msgstr ""
+
+#: views/newcw.php:11
+msgid "Upload a Crossword file in EV CW Format"
+msgstr ""
+
+#: views/newcw.php:18
+msgid "Crossword name"
+msgstr ""
+
+#: views/newcw.php:21
+msgid "Description"
+msgstr ""
+
+#: views/newcw.php:23
+msgid "Upload Crossword"
+msgstr ""
+
+#: views/newcw.php:29
+msgid ""
+"While you can understand the EV crossword format easily and create "
+"crosswords manually, it is easier with the EV Crossword making tool"
+msgstr ""
+
+#: views/newcw.php:30
+msgid ""
+"You can learn more about the format and the tool %1$s here %2$s or just %3$s "
+"download the tool %4$s"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "EV Crosswords"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://entreveloper.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Crossword Plugin for anyone to easily create and add Crosswords to their "
+"Wordpress website"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "The Entreveloper"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/TheEntreveloper"
+msgstr ""

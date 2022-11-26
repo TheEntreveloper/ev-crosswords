@@ -1,0 +1,93 @@
+<cw name="gral1" subject="general" cols="17" rows="17">
+    <horizontals>
+        <word value="usa" xpos="0" ypos="1">
+Powerful North American country
+        </word>
+        <word value="sweden" xpos="2" ypos="0">
+its Capital is the beautiful city of Stockholm
+        </word>
+        <word value="italy" xpos="6" ypos="2">
+its capital was very influential in ancient times
+        </word>
+        <word value="mexico" xpos="6" ypos="4">
+Acapulco is in this country
+        </word>
+        <word value="brazil" xpos="2" ypos="6">
+large portuguese speaking South American country
+        </word>
+        <word value="uk" xpos="11" ypos="7">
+Kingdom in the North of Europe (initials)
+        </word>
+        <word value="china" xpos="0" ypos="11">
+large increasingly powerful Asian country
+        </word>
+        <word value="libya" xpos="11" ypos="10">
+country in North Africa
+        </word>
+        <word value="argentina" xpos="0" ypos="16">
+country of Carlos Gardel
+        </word>
+        <word value="japan" xpos="12" ypos="16">
+well developed East Asian country
+        </word>
+        <word value="iran" xpos="10" ypos="14">
+its Capital is Tehran
+        </word>
+        <word value="france" xpos="11" ypos="1">
+it has the Eiffel Tower
+        </word>
+    </horizontals>
+    <verticals>
+        <word value="russia" xpos="0" ypos="0">
+its capital is Moscow
+        </word>
+        <word value="sa" xpos="2" ypos="0">
+South Africa (initials)
+        </word>
+        <word value="egypt" xpos="4" ypos="0">
+country of Cleopatra
+        </word>
+        <word value="netherlands" xpos="7" ypos="0">
+the Dutch country
+        </word>
+        <word value="israel" xpos="9" ypos="4">
+University of Jerusalem is in this country
+        </word>
+        <word value="portugal" xpos="11" ypos="3">
+country of Christiano Ronaldo
+        </word>
+        <word value="cuba" xpos="2" ypos="4">
+well known Caribbean Island
+        </word>
+        <word value="australia" xpos="4" ypos="6">
+Amongst its reach fauna we can find Kangaroos
+        </word>
+        <word value="canada" xpos="0" ypos="11">
+large, English and French speaking North American country
+        </word>
+        <word value="iraq" xpos="2" ypos="11">
+its Capital is Baghdad
+        </word>
+        <word value="india" xpos="12" ypos="10">
+large growing economy in Asia
+        </word>
+        <word value="germany" xpos="14" ypos="4">
+country of Albert Einstein
+        </word>
+        <word value="austria" xpos="15" ypos="10">
+its Capital is the lovely city of Vienna
+        </word>
+        <word value="dubai" xpos="6" ypos="12">
+located in the Persian Gulf
+        </word>
+        <word value="kenya" xpos="8" ypos="12">
+its Capital is Nairobi
+        </word>
+        <word value="spain" xpos="10" ypos="11">
+country where Barcelona is
+        </word>
+        <word value="laos" xpos="13" ypos="0">
+Asian country near Vietnam
+        </word>
+    </verticals>
+</cw>
