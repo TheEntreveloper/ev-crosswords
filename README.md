@@ -13,7 +13,7 @@ Entreveloper Crossword Making Tool, a free Java Desktop App that can be download
 here: https://github.com/TheEntreveloper/crosswords/blob/main/maker/maker.zip
 The tool allows you to create Crosswords files interactively, which you can then upload and view, categorize and make available to your visitors.
 
-== Installation ==
+## Installation 
 
 Installation and use of this plugin is straightforward:
 
@@ -23,3 +23,16 @@ Installation and use of this plugin is straightforward:
 4. Upload crossword files previously created (manually or with the Crosswords Maker Tool)
 5. The uploaded crossword is now available through the crosswords entry in the Dashboard, and 
 can be displayed to end users in the frontend (see the url under the "View" option of each entry). 
+
+## Contributing
+
+Anyone is welcome to contribute to the development and improvement of this Plugin. Here are a few ways to do so:
+
+- Help testing it and report or even better fix any bug you find.
+- Provide translation into a different language.
+- Propose or work on new features.
+- Let your followers know about it.
+- Donate to support its development.
+
+Visit https://entreveloper.com/category/entertainment/ for some examples of Crosswords created with the tool and this Plugin, 
+and to find out about other apps and tools we are working on. 
