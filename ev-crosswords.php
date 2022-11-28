@@ -3,7 +3,7 @@
  * Plugin Name: EV Crosswords
  * Plugin URI: https://entreveloper.com/
  * Description: Crossword Plugin for anyone to easily create and add Crosswords to their Wordpress website
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: The Entreveloper
  * Author URI: https://github.com/TheEntreveloper
  * License: GPLv2 or later
