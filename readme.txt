@@ -23,6 +23,9 @@ Wordpress website using this Plugin, it is easier to create those files with the
 
 The tool allows you to create Crosswords files interactively, which you can then upload and view, categorize and make available to your visitors.
 
+Watch a short [YouTube video](https://www.youtube.com/watch?v=AnQd8gPxKfw "TheEntreveloper YouTube Channel") that briefly covers the tool and Plugin.
+
+
 == Installation ==
 
 Installation and use of this plugin is straightforward:

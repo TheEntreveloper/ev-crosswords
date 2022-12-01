@@ -19,6 +19,8 @@ here: https://github.com/TheEntreveloper/crosswords/blob/main/maker/maker.zip
 
 Using this tool you can create Crosswords files interactively, which you can then upload and view, categorize and make available to your visitors.
 
+Watch a short [YouTube video](https://www.youtube.com/watch?v=AnQd8gPxKfw "TheEntreveloper YouTube Channel") that briefly covers the tool and Plugin.
+
 ## Installation 
 
 Installation and use of this plugin is straightforward:
