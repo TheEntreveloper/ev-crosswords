@@ -96,9 +96,15 @@ class EvCwPluginLauncher {
     }
 
     public function cwScripts() {
-        if (is_admin()) return;
+        if (is_admin() || !is_singular( 'ev_crossword' )) return;
+
         wp_enqueue_script('cwviewer', plugins_url('../views/crossword/js/cwviewer.js', __FILE__), array( 'jquery' ), null, true);
-        wp_enqueue_style('twboostrap',plugins_url('../views/crossword/css/bootstrap.min.css', __FILE__));
+
+        // Load Bootstrap grid only
+        wp_enqueue_style('twboostrap',plugins_url('../views/crossword/css/bootstrap-grid.min.css', __FILE__));
+
+        // Load plugin core styles
+        wp_enqueue_style('cwstyles',plugins_url('../views/crossword/css/main.css', __FILE__));
     }
 
     /**
@@ -112,8 +118,12 @@ class EvCwPluginLauncher {
     }
 
     function loadTemplates($template) {
+        // Template for single view only for now. (Add archive template later on)
+        if(!is_singular( 'ev_crossword' )) return $template;
+
         global $wp_query, $_wp_current_template_content;
         $post = $wp_query->get_queried_object();
+        
         if (isset($post) && $post->post_type === 'ev_crossword') {
             $_POST['cwtitle'] = $post->post_title;
 
