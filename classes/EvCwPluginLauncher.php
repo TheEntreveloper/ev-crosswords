@@ -102,9 +102,6 @@ class EvCwPluginLauncher {
 
         // Load Bootstrap grid only
         wp_enqueue_style('twboostrap',plugins_url('../views/crossword/css/bootstrap-grid.min.css', __FILE__));
-
-        // Load plugin core styles
-        wp_enqueue_style('cwstyles',plugins_url('../views/crossword/css/main.css', __FILE__));
     }
 
     /**
@@ -118,12 +115,13 @@ class EvCwPluginLauncher {
     }
 
     function loadTemplates($template) {
+        global $wp_version;
         // Template for single view only for now. (Add archive template later on)
         if(!is_singular( 'ev_crossword' )) return $template;
 
         global $wp_query, $_wp_current_template_content;
         $post = $wp_query->get_queried_object();
-        
+
         if (isset($post) && $post->post_type === 'ev_crossword') {
             $_POST['cwtitle'] = $post->post_title;
 
@@ -131,7 +129,13 @@ class EvCwPluginLauncher {
                 $template = EVCWV_PLUGIN_DIR . 'views/crossword/single-crossword.php';
             } else {
                 $_wp_current_template_content = file_get_contents(EVCWV_PLUGIN_DIR . 'views/crossword/blockdata');
-                $_wp_current_template_content = _inject_theme_attribute_in_block_template_content($_wp_current_template_content);
+                // dealing with the deprecated function, but still trying to keep the plugin backwards compatible
+                if (isset($wp_version) && version_compare($wp_version, '6.4.0', '<')) {
+                    $_wp_current_template_content = _inject_theme_attribute_in_block_template_content($_wp_current_template_content);
+                } else {
+                    $_wp_current_template_content = traverse_and_serialize_blocks( parse_blocks( $_wp_current_template_content ), '_inject_theme_attribute_in_template_part_block' );
+                }
+
                 $template = EVCWV_PLUGIN_DIR . 'views/crossword/single-block-crossword.php';
             }
         }
