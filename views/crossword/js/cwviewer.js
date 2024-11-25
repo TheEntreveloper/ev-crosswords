@@ -144,17 +144,20 @@ Crossword.prototype = {
 		this.context.fillRect(0,0, this.cwwidth,this.cwheight);
 		this.context.fillStyle = 'black';
         this.context.strokeStyle = '#000020';
-        this.context.lineWidth = 1.5;
+        this.context.lineWidth = 0.5;
 
-        for (var i = 0.5 + this.stepx; i < this.cwwidth; i += this.stepx) {
+        // Draw board vertical lines
+        for (var i = 0 + this.stepx; i < this.cwwidth; i += this.stepx) {
             this.context.beginPath();
+            this.context.strokeStyle = "black";
             this.context.moveTo(i, 0);
             this.context.lineTo(i, this.cwheight);
             this.context.stroke();
         }
 
-        for (var i = 0.5 + this.stepy; i < this.cwheight; i += this.stepy) {
+        for (var i = 0 + this.stepy; i < this.cwheight; i += this.stepy) {
             this.context.beginPath();
+            this.context.strokeStyle = "black";
             this.context.moveTo(0, i);
             this.context.lineTo(this.cwwidth, i);
             this.context.stroke();
@@ -169,10 +172,10 @@ Crossword.prototype = {
             for(var i=0;i<this.nx;i++)
             {
                 if(this.cwMask[i][j]===1) {
-                    var xx = i*this.stepx+2;
-                    var yy = j*this.stepy+2;
-					this.context.fillStyle = 'black';
-					this.context.fillRect(xx,yy,this.stepx-1,this.stepy-1);
+                    var xx = i*this.stepx+0.5;
+                    var yy = j*this.stepy+0.5;
+					this.context.fillStyle = '#00377C';
+					this.context.fillRect(xx,yy,this.stepx-0.5,this.stepy-0.5);
                 } else if (this.cwMask[i][j] !== 0) {
                     var xx = 0.5+i*this.stepx+this.stepx/2-5;
                     var yy = 0.5+j*this.stepy+this.stepy/2+7;

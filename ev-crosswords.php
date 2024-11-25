@@ -44,6 +44,12 @@ if ( ! defined( 'EVCWV_PLUGIN_DIR' ) ) {
 if ( ! class_exists('EvFormsClass')) {
     include_once dirname( __FILE__ ) . '/classes/EvCwPluginLauncher.php';
 }
+if ( ! class_exists('EvCwPluginMetaBox')) {
+    include_once dirname( __FILE__ ) . '/classes/EvCwPluginMetaBox.php';
+}
+if ( ! class_exists('EvCwPluginSettings')) {
+    include_once dirname( __FILE__ ) . '/classes/EvCwPluginSettings.php';
+}
 
 function evcwv() {
     return EvCwPluginLauncher::instantiatePlugin();
