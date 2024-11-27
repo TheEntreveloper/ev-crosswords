@@ -3,7 +3,7 @@
  * Plugin Name: EV Crosswords
  * Plugin URI: https://entreveloper.com/
  * Description: Crossword Plugin for anyone to easily create and add Crosswords to their Wordpress website
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: The Entreveloper
  * Author URI: https://github.com/TheEntreveloper
  * License: GPLv2 or later
@@ -41,7 +41,13 @@ if ( ! defined( 'EVCWV_PLUGIN' ) ) {
 if ( ! defined( 'EVCWV_PLUGIN_DIR' ) ) {
     define( 'EVCWV_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 }
-if ( ! class_exists('EvFormsClass')) {
+if ( ! class_exists('AIAPI')) {
+    include_once dirname( __FILE__ ) . '/classes/AIAPI.php';
+}
+if ( ! class_exists('CreatoriveCwMaker')) {
+    include_once dirname( __FILE__ ) . '/classes/CreatoriveCwMaker.php';
+}
+if ( ! class_exists('EvCwPluginLauncher')) {
     include_once dirname( __FILE__ ) . '/classes/EvCwPluginLauncher.php';
 }
 if ( ! class_exists('EvCwPluginMetaBox')) {

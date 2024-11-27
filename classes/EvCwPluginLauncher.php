@@ -4,8 +4,7 @@ defined('ABSPATH') || exit();
 /**
  * The Heart of the Plugin
  */
-class EvCwPluginLauncher
-{
+class EvCwPluginLauncher {
     protected static $instance = null;
     const REQ_FN_MAP = array('viewall' => 'viewCwList', 'viewraw' => '', 'viewcw' => '', 'delete' => '');
     const TITLE = 'EV Crosswords Plugin Admin';
@@ -47,7 +46,7 @@ class EvCwPluginLauncher
             ),
             'label' => __('Crosswords', 'ev-crosswords'),
             'public' => true,
-            //'show_in_rest' => true,  <-- not in this version
+            'show_in_rest' => true,
             'taxonomies' => array('category'),
             'supports' => array(
                 'title',
@@ -73,10 +72,10 @@ class EvCwPluginLauncher
         global $pagenow;
         $this->registerPostTypes();
         add_action('admin_menu', array(self::$instance, 'adminMenu'));
-        if ($pagenow == 'post-new.php' && isset($_GET['post_type']) && sanitize_text_field($_GET['post_type']) === 'ev_crossword') {
-            wp_safe_redirect(admin_url('admin.php?page=evcwv-plugin-settings'));
-            exit;
-        }
+//        if ($pagenow == 'post-new.php' && isset($_GET['post_type']) && sanitize_text_field($_GET['post_type']) === 'ev_crossword') {
+//            wp_safe_redirect(admin_url('admin.php?page=evcwv-plugin-settings'));
+//            exit;
+//        }
         add_action('wp_enqueue_scripts', array($this, 'cwScripts'));
         add_action('wp_head', array($this, 'cwHead'));
         add_action('pre_get_posts', array($this, 'siteWideCwViews'));
@@ -85,8 +84,10 @@ class EvCwPluginLauncher
         add_filter('template_include', array($this, 'loadTemplates'));
         add_filter('the_posts', [$this, 'cwCnt']);
         load_plugin_textdomain('ev-crossword', false, plugin_basename(dirname(EVCWV_PLUGIN)) . '/languages');
-
-        $this->register_block_template();
+        register_block_type( EVCWV_PLUGIN_DIR . 'build/block.json' );
+		AIAPI::completion();
+        CreatoriveCwMaker::create();
+        //$this->register_block_template();
     }
 
     public function adminMenu()
@@ -143,6 +144,7 @@ class EvCwPluginLauncher
 
     function loadTemplates($template)
     {
+        if (wp_is_block_theme()) return $template;
         // Template for single view only for now. (Add archive template later on)
         if (!is_singular('ev_crossword')) return $template;
 
@@ -265,7 +267,7 @@ class EvCwPluginLauncher
     public function load_block_template()
     {
         ob_start();
-        include EVCWV_PLUGIN_DIR . "views/crossword/single-block-crossword.php";
+        //include EVCWV_PLUGIN_DIR . "views/crossword/single-block-crossword.php";
         return ob_get_clean();
     }
 
