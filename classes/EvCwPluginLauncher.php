@@ -85,9 +85,9 @@ class EvCwPluginLauncher {
         add_filter('the_posts', [$this, 'cwCnt']);
         load_plugin_textdomain('ev-crossword', false, plugin_basename(dirname(EVCWV_PLUGIN)) . '/languages');
         register_block_type( EVCWV_PLUGIN_DIR . 'build/block.json' );
-		AIAPI::completion();
+		// AIAPI::completion();
         CreatoriveCwMaker::create();
-        //$this->register_block_template();
+        $this->register_block_template();
     }
 
     public function adminMenu()
@@ -155,31 +155,19 @@ class EvCwPluginLauncher {
 
     function loadTemplatesOld($template)
     {
-        global $wp_version;
+       
         // Template for single view only for now. (Add archive template later on)
         if (!is_singular('ev_crossword')) return $template;
 
         if (wp_is_block_theme()) return $template;
 
-        global $wp_query, $_wp_current_template_content;
+        global $wp_query;
+        
         $post = $wp_query->get_queried_object();
 
         if (isset($post) && $post->post_type === 'ev_crossword') {
             $_POST['cwtitle'] = $post->post_title;
-
-            if (!file_exists(TEMPLATEPATH . '/theme.json')) {
-                $template = EVCWV_PLUGIN_DIR . 'views/crossword/single-crossword.php';
-            } else {
-                // $_wp_current_template_content = file_get_contents(EVCWV_PLUGIN_DIR . 'views/crossword/blockdata');
-                // // dealing with the deprecated function, but still trying to keep the plugin backwards compatible
-                // if (isset($wp_version) && version_compare($wp_version, '6.4.0', '<')) {
-                //     $_wp_current_template_content = _inject_theme_attribute_in_block_template_content($_wp_current_template_content);
-                // } else {
-                //     $_wp_current_template_content = traverse_and_serialize_blocks(parse_blocks($_wp_current_template_content), '_inject_theme_attribute_in_template_part_block');
-                // }
-
-                $template = EVCWV_PLUGIN_DIR . 'views/crossword/single-block-crossword.php';
-            }
+            $template = EVCWV_PLUGIN_DIR . 'views/crossword/single-crossword.php';
         }
         return $template;
     }
@@ -267,14 +255,7 @@ class EvCwPluginLauncher {
     public function load_block_template()
     {
         ob_start();
-        //include EVCWV_PLUGIN_DIR . "views/crossword/single-block-crossword.php";
-        return ob_get_clean();
-    }
-
-    public function render_crossword()
-    {
-        ob_start();
-        include EVCWV_PLUGIN_DIR . "views/crossword/content-crossword.php";
+        include EVCWV_PLUGIN_DIR . "views/crossword/single-crossword.html";
         return ob_get_clean();
     }
 

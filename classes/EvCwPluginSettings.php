@@ -1,4 +1,5 @@
 <?php
+
 /**
  * class EvCwPluginSettings
  * 
@@ -14,10 +15,15 @@ class EvCwPluginSettings
          * Register our evcw_options_page to the admin_menu action hook.
          */
         add_action('admin_menu', array($this, 'evcw_options_page'));
+
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_custom_settings_assets'));
     }
 
     function evcw_settings_init()
     {
+
+        $options = get_option('evcw_config_options');
+
         // Register a new setting for "evcw" page.
         register_setting('ev_config', 'evcw_config_options');
 
@@ -46,23 +52,38 @@ class EvCwPluginSettings
             )
         );
 
+
+        $css_class = $options['evcw_ai_provider'] == 'local_model' ? '' : 'hide';
+
         add_settings_field(
-            'evcw_ai_provider_apy_key', // As of WP 4.6 this value is used only internally.
+            'evcw_ai_local_provider_url', // As of WP 4.6 this value is used only internally.
             // Use $args' label_for to populate the id inside the callback.
-            __('AI Provider API KEY', 'evcw'),
-            array($this, 'evcw_ai_provider_apy_key_cb'),
+            __('Local Provider URL', 'evcw'),
+            array($this, 'evcw_ai_local_provider_url_cb'),
             'ev_config',
             'evcw_config_section',
             array(
-                'label_for'         => 'evcw_ai_provider_apy_key',
+                'label_for'         => 'evcw_ai_local_provider_url',
+                'class'             => 'evcw_row evcw_ai_local_provider_url_wrap ' . $css_class,
+                'evcw_custom_data' => 'custom',
+            )
+        );
+
+
+        add_settings_field(
+            'evcw_ai_provider_api_key', // As of WP 4.6 this value is used only internally.
+            // Use $args' label_for to populate the id inside the callback.
+            __('AI Provider API KEY', 'evcw'),
+            array($this, 'evcw_ai_provider_api_key_cb'),
+            'ev_config',
+            'evcw_config_section',
+            array(
+                'label_for'         => 'evcw_ai_provider_api_key',
                 'class'             => 'evcw_row',
                 'evcw_custom_data' => 'custom',
             )
         );
     }
-
-
-
 
     /**
      * Custom option and settings:
@@ -77,7 +98,7 @@ class EvCwPluginSettings
      */
     function evcw_config_section_callback($args)
     {
-    ?>
+?>
         <p id="<?php echo esc_attr($args['id']); ?>"><?php esc_html_e('Choose your AI configuration to generate the word list for your crosswords', 'ev-crosswords'); ?></p>
     <?php
     }
@@ -101,22 +122,34 @@ class EvCwPluginSettings
             id="<?php echo esc_attr($args['label_for']); ?>"
             data-custom="<?php echo esc_attr($args['evcw_custom_data']); ?>"
             name="evcw_config_options[<?php echo esc_attr($args['label_for']); ?>]">
-            <option value="openai" <?php echo isset($options[$args['label_for']]) ? (selected($options[$args['label_for']], 'openai', false)) : (''); ?>>
+            <option value="OpenAI" <?php echo isset($options[$args['label_for']]) ? (selected($options[$args['label_for']], 'OpenAI', false)) : (''); ?>>
                 <?php esc_html_e('Open AI', 'ev-crosswords'); ?>
             </option>
-            <option value="anthropic" <?php echo isset($options[$args['label_for']]) ? (selected($options[$args['label_for']], 'anthropic', false)) : (''); ?>>
+            <option value="Anthropic" <?php echo isset($options[$args['label_for']]) ? (selected($options[$args['label_for']], 'Anthropic', false)) : (''); ?>>
                 <?php esc_html_e('Anthropic', 'ev-crosswords'); ?>
+            </option>
+            <option value="local_model" <?php echo isset($options[$args['label_for']]) ? (selected($options[$args['label_for']], 'local_model', false)) : (''); ?>>
+                <?php esc_html_e('Local Model', 'ev-crosswords'); ?>
             </option>
         </select>
     <?php
     }
 
-    function evcw_ai_provider_apy_key_cb($args)
+    function evcw_ai_local_provider_url_cb($args)
+    {
+        $options = get_option('evcw_config_options');
+
+    ?>
+        <input type="text" data-custom="<?php echo esc_attr($args['evcw_custom_data']); ?>" id="<?php echo esc_attr($args['label_for']); ?>" name="evcw_config_options[<?php echo esc_attr($args['label_for']); ?>]" value="<?php echo $options[$args['label_for']]; ?>">
+    <?php
+    }
+
+    function evcw_ai_provider_api_key_cb($args)
     {
         // Get the value of the setting we've registered with register_setting()
         $options = get_option('evcw_config_options');
     ?>
-        <input type="password" data-custom="<?php echo esc_attr($args['evcw_custom_data']); ?>" id="<?php echo esc_attr($args['label_for']); ?>" name="evcw_config_options[<?php echo esc_attr($args['label_for']); ?>]" value="<?php echo $options[$args['label_for']]; ?>" >
+        <input type="password" data-custom="<?php echo esc_attr($args['evcw_custom_data']); ?>" id="<?php echo esc_attr($args['label_for']); ?>" name="evcw_config_options[<?php echo esc_attr($args['label_for']); ?>]" value="<?php echo $options[$args['label_for']]; ?>">
     <?php
     }
 
@@ -173,6 +206,24 @@ class EvCwPluginSettings
             </form>
         </div>
 <?php
+    }
+
+    function enqueue_custom_settings_assets($hook)
+    {
+
+        $screen = get_current_screen();
+
+        if ($screen->post_type !== 'ev_crossword') return;
+
+        // loading css
+        wp_register_style('evcw-settings-css', EVCWV_PLUGIN_URL . 'admin/assets/settings.css', false, '1.0.0');
+        wp_enqueue_style('evcw-settings-css');
+
+        // loading js
+        wp_register_script('evcw-settings-js', EVCWV_PLUGIN_URL . 'admin/assets/settings.js', array('jquery-core'), false, true);
+        wp_enqueue_script('evcw-settings-js');
+
+        wp_localize_script('evcw-settings-js', 'evcw_obj', array('ajax_url' => admin_url('admin-ajax.php')));
     }
 }
 

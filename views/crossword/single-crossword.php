@@ -34,11 +34,9 @@
 defined('ABSPATH') || exit;
 
 // check if theme contains header (block themes do not)
-if (!wp_is_block_theme()) {
-    get_header();
-} else {
-    include EVCWV_PLUGIN_DIR . 'views/crossword/cw-block-header.php';
-}
+
+get_header();
+
 
 if (have_posts()):
     while (have_posts()): the_post();
@@ -181,8 +179,4 @@ endif;
 ?>
 
 <?php
-if (!wp_is_block_theme()) {
-    get_footer();
-} else {
-    include EVCWV_PLUGIN_DIR . 'views/crossword/cw-block-footer.php';
-}
+get_footer();

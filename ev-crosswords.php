@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: EV Crosswords
  * Plugin URI: https://entreveloper.com/
@@ -29,14 +30,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Copyright 2022-2023 Entreveloper.com
 */
-if ( ! defined( 'ABSPATH' ) ) {
-    echo(wp_kses_data('Perhaps another day...'));
+if (! defined('ABSPATH')) {
+    echo (wp_kses_data('Perhaps another day...'));
     exit; // Exit if accessed directly.
 }
-define( 'EVCWV_PLUGIN_VERSION', '1.0.5' );
+define('EVCWV_PLUGIN_VERSION', '1.0.5');
 // Define EVCWV_PLUGIN_FILE.
-if ( ! defined( 'EVCWV_PLUGIN' ) ) {
-    define( 'EVCWV_PLUGIN', __FILE__ );
+if (! defined('EVCWV_PLUGIN')) {
+    define('EVCWV_PLUGIN', __FILE__);
 }
 if ( ! defined( 'EVCWV_PLUGIN_DIR' ) ) {
     define( 'EVCWV_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
@@ -57,7 +58,23 @@ if ( ! class_exists('EvCwPluginSettings')) {
     include_once dirname( __FILE__ ) . '/classes/EvCwPluginSettings.php';
 }
 
-function evcwv() {
+if (! defined('EVCWV_PLUGIN_URL')) {
+    define('EVCWV_PLUGIN_URL', plugin_dir_url(EVCWV_PLUGIN));
+}
+
+
+if (! class_exists('EvFormsClass')) {
+    include_once dirname(__FILE__) . '/classes/EvCwPluginLauncher.php';
+}
+if (! class_exists('EvCwPluginMetaBox')) {
+    include_once dirname(__FILE__) . '/classes/EvCwPluginMetaBox.php';
+}
+if (! class_exists('EvCwPluginSettings')) {
+    include_once dirname(__FILE__) . '/classes/EvCwPluginSettings.php';
+}
+
+function evcwv()
+{
     return EvCwPluginLauncher::instantiatePlugin();
 }
 

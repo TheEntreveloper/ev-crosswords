@@ -1,0 +1,54 @@
+/* Style the tab */
+
+.evcw-post-editor-config .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.evcw-post-editor-config .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.evcw-post-editor-config .tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.evcw-post-editor-config .tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.evcw-post-editor-config .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.evcw-post-editor-config textarea{
+    width: 100%;
+    min-height: 300px;
+}
+
+.evcw-post-editor-config input{
+    width: 100%;
+}
+
+.evcw-field-group{
+    margin-bottom: 20px;
+}
+
+.flex{
+    display: flex;
+}
